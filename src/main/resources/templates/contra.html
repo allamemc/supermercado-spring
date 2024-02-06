@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>
+        <a href="/">Supermercados de la abuela</a>
+    </h2>
+    <h2 id="error" style="visibility: hidden; color: red">Las contraseñas no coinciden</h2>
+    <form th:action="@{/guardarcontra}" method="post" id="formulario">
+        <fieldset><legend>Establece la nueva contraseña</legend>
+            <p>
+                <label for="pw1">Nueva contraseña: </label>
+                <input type="password" name="pw1" id="pw1" required>
+            </p>
+            <p>
+                <label for="pw2">Vuelva a introducir la contraseña: </label>
+                <input type="password" name="pw2" id="pw2" required>
+            </p>
+            <p>
+                <input type="button" value="Guardar nueva contraseña" onclick="validar()">
+            </p>
+        </fieldset>
+    </form>
+
+    <script>
+        function validar() {
+            let pw1 = document.getElementById("pw1").value;
+            let pw2 = document.getElementById("pw2").value;
+            if (pw1===pw2) {
+                document.getElementById("formulario").submit();
+            }
+            else {
+                document.getElementById("error").style.visibility="visible";
+            }
+        }
+    </script>
+</body>
+</html>

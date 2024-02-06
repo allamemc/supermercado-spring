@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos del supermercado</title>
+</head>
+<body>
+    <h2>Supermercados de la abuela</a>
+        <a href="/productos">Productos</a>
+        <a th:if="${!(user==null) && user.getPermiso().equals('ADMINISTRADOR')}" href="/categorias">Categorías</a>
+        <a th:if="${user==null}" th:href="@{/login}">Iniciar sesión</a>
+        <a th:if="${!(user==null) && user.getPermiso().equals('CLIENTE')}" th:href="@{/carrito}">Comprar</a>
+        <a th:if="${!(user==null) && user.getPermiso().equals('CLIENTE')}" th:href="@{/vercarrito}">Carrito</a>
+        <a th:if="${!(user==null)}" th:href="@{/perfil}">Perfil</a>
+        <a th:if="${!(user==null)}" th:href="@{/logout}">Cerrar sesión</a>
+    </h2>
+    <h4 th:if="${!(user==null)}">
+        <span>Usuario actual: </span>
+        <span th:text="${user.getIdcliente()+' - '+user.getCia()}"></span>
+    </h4>
+
+    <h2 th:if="${!(user==null) && user.getPermiso().equals('ADMINISTRADOR')}">
+        <form action="/pedido" method="get">
+            <input type="number" value="10248" name="idpedido">
+            <input type="submit" value="Localiza el pedido">
+        </form>
+    </h2>
+    <img th:src="@{imagenes/supermercado.jpg}" alt="Foto cajera supermercado">
+  </body>
+</html>

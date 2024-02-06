@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2><a href="/">Supermercados de la abuela</a></h2>
+<h1 th:if="${!pedido.isPresent()}">Pedido no disponible</h1>
+<th:block  th:if="${pedido.isPresent()}">
+    <h1>
+        <span>Pedido nº</span>
+        <span th:text="${pedido.get().getIdpedido()}"></span>
+    </h1>
+    <h2>
+        <span>Fecha pedido:</span>
+        <span th:text="${pedido.get().getFechapedido()}"></span>
+    </h2>
+    <h2>
+        <span>Fecha entrega:</span>
+        <span th:text="${pedido.get().getFechaentrega()}"></span>
+    </h2>
+    <p>
+        <span>Compañía: </span>
+        <span th:text="${pedido.get().getCliente().getCia()}"></span>
+    </p>
+    <p>
+        <span>Contacto: </span>
+        <span th:text="${pedido.get().getCliente().getContacto()}"></span>
+    </p>
+    <p>
+        <span>Dirección: </span>
+        <span th:text="${pedido.get().getCliente().getDireccion()}"></span>
+        <span th:text="${pedido.get().getCliente().getCp()}"></span>
+        <span th:text="${pedido.get().getCliente().getCiudad()}"></span>
+        <span th:text="${pedido.get().getCliente().getPais()}"></span>
+    </p>
+    <ul>
+        <li th:each="detalle : ${pedido.get().getDetalles()}" th:text="${detalle}"></li>
+    </ul>
+</th:block>
+</form>
+</body>
+</html>

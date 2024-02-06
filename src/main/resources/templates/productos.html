@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2><a href="/">Supermercados de la abuela</a></h2>
+    <p2 th:if="${!(user==null) && user.getPermiso().equals('ADMINISTRADOR')}"><a href="/nuevo">Añadir un nuevo producto</a></p2>
+    <h1>Listado de productos</h1>
+    <table>
+    <tr>
+        <th>IdProducto</th>
+        <th>Nombre Producto</th>
+        <th>Categoría</th>
+        <th>Medida</th>
+        <th>Precio</th>
+        <th>Stock</th>
+    </tr>
+    <tr th:each="prod : ${productos}">
+        <td th:text="${prod.getIdproducto()}"></td>
+        <td th:text="${prod.getNombre()}"></td>
+        <td th:text="${prod.getCategoria().getCategoria()}"></td>
+        <td th:text="${prod.getMedida()}"></td>
+        <td th:text="${prod.getPrecio()}"></td>
+        <td th:text="${prod.getStock()}"></td>
+    </tr>
+    </table>
+
+</body>
+</html>

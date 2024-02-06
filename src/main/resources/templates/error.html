@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center">
+    <h2><a href="/">Supermercados de la abuela</a></h2>
+    <img th:src="@{imagenes/error.png}" alt="Ha ocurrido un error">
+    <h1>Ha ocurrido un error <span th:text="${status}"></span></h1>
+    <h1>Error: <span th:text="${error}"></span></h1>
+    <h1>Path: <span th:text="${path}"></span></h1>
+    <h2>Si el problema persiste, consulte con el proveedor</h2>
+</div>
+</body>
+</html>

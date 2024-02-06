@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2><a href="/">Supermercados de la abuela</a></h2>
+    <h1>Este es su carrito:</h1>
+    <table>
+    <tr>
+        <th>IdProducto</th>
+        <th>Nombre Producto</th>
+        <th>Categoría</th>
+        <th>Medida</th>
+        <th>Precio</th>
+        <th>Unidades</th>
+    </tr>
+    <tr th:each="detalle : ${carrito.getDetalles()}">
+        <td th:text="${detalle.getProducto().getIdproducto()}"></td>
+        <td th:text="${detalle.getProducto().getNombre()}"></td>
+        <td th:text="${detalle.getProducto().getCategoria().getCategoria()}"></td>
+        <td th:text="${detalle.getProducto().getMedida()}"></td>
+        <td th:text="${detalle.getPrecio()}"></td>
+        <td th:text="${detalle.getUnidades()}"></td>
+    </tr>
+    </table>
+    <a href="/carrito">Seguir comprando</a>
+    <a href="/hacerpedido">Finalizar pedido</a>
+</body>
+</html>

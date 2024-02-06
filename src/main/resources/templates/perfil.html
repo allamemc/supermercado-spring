@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>
+        <a href="/">Supermercados de la abuela</a>
+        <a th:if="${!(user==null)}" href="/contra">Cambiar la contraseña</a>
+    </h2>
+    <form th:if="${!(user==null)}" th:action="@{/guardarperfil}" th:object="${user}" method="post">
+        <fieldset><legend>Edita tu perfil</legend>
+
+            <!-- Atributos que no queremos que el usuario edite
+            pero tampoco deseamos que regresen vacíos al controlador -->
+            <input type="hidden" th:field="*{idcliente}">
+            <input type="hidden" th:field="*{pw}">
+            <input type="hidden" th:field="*{activo}">
+            <input type="hidden" th:field="*{permiso}">
+            <p>
+                <label for="cia">Compañía: </label>
+                <input type="text" th:field="*{cia}" id="cia">
+            </p>
+            <p>
+                <label for="contacto">Contacto: </label>
+                <input type="text" th:field="*{contacto}" id="contacto">
+            </p>
+            <p>
+                <label for="cargo">Cargo contacto: </label>
+                <input type="text" th:field="*{cargo}" id="cargo">
+            </p>
+            <p>
+                <label for="direccion">Dirección: </label>
+                <input type="text" th:field="*{direccion}" id="direccion">
+            </p>
+            <p>
+                <label for="ciudad">Ciudad: </label>
+                <input type="text" th:field="*{ciudad}" id="ciudad">
+            </p>
+            <p>
+                <label for="region">Región: </label>
+                <input type="text" th:field="*{region}" id="region">
+            </p>
+            <p>
+                <label for="cp">Código Postal: </label>
+                <input type="text" th:field="*{cp}" id="cp">
+            </p>
+            <p>
+                <label for="pais">País: </label>
+                <input type="text" th:field="*{pais}" id="pais">
+            </p>
+            <p>
+                <label for="tlf">Teléfono: </label>
+                <input type="text" th:field="*{tlf}" id="tlf">
+            </p>
+            <p>
+                <label for="fax">Fax: </label>
+                <input type="text" th:field="*{fax}" id="fax">
+            </p>
+            <p>
+                <input type="submit" value="Guardar cambios">
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

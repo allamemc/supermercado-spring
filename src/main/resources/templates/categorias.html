@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2><a href="/">Supermercados de la abuela</a></h2>
+<th:block th:each="categoria : ${categorias}">
+    <h1>Categoría <span th:text="${categoria.getCategoria()}"></span> </h1>
+    <table>
+        <tr>
+            <th>IdProducto</th>
+            <th>Nombre Producto</th>
+            <th>Medida</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+        <tr th:each="prod : ${categoria.getProductos()}">
+            <td th:text="${prod.getIdproducto()}"></td>
+            <td th:text="${prod.getNombre()}"></td>
+            <td th:text="${prod.getMedida()}"></td>
+            <td th:text="${prod.getPrecio()}"></td>
+            <td th:text="${prod.getStock()}"></td>
+            <td>
+                <a th:href="${'/editar?idProducto='+prod.getIdproducto()}">Editar</a>
+            </td>
+            <td>
+                <a th:href="${'/eliminar?idProducto='+prod.getIdproducto()}">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+</th:block>
+</body>
+</html>

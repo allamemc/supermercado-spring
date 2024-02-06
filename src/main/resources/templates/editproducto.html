@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar producto</title>
+</head>
+<body>
+<h2><a href="/">Supermercados de la abuela</a></h2>
+<form th:action="@{/guardar}" th:object="${producto}" method="post">
+    <fieldset><legend>Edita el producto</legend>
+        <p>
+            <label for="categoria">Categoría: </label>
+            <select th:field="*{categoria.idcategoria}" name="categoria" id="categoria">
+                <option th:each="c : ${categorias}" th:value="${c.getIdcategoria()}" th:text="${c.getCategoria()}"></option>
+            </select>
+        </p>
+        <p>
+            <label for="idproducto">Id Producto: </label>
+            <input type="text" th:field="*{idproducto}" readonly id="idproducto">
+        </p>
+        <p>
+            <label for="nombre">Nombre del producto: </label>
+            <input type="text" th:field="*{nombre}" id="nombre">
+        </p>
+        <p>
+            <label for="medida">Medida: </label>
+            <input type="text" th:field="*{medida}" id="medida">
+        </p>
+        <p>
+            <label for="precio">Precio: </label>
+            <input type="number" th:field="*{precio}" id="precio">
+        </p>
+        <p>
+            <label for="stock">Stock: </label>
+            <input type="number" th:field="*{stock}" id="stock">
+        </p>
+        <p>
+            <input type="submit" value="Guardar cambios">
+        </p>
+    </fieldset>
+</form>
+</body>
+</html>
